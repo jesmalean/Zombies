@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Jugador : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class Jugador : MonoBehaviour
                 StartCoroutine(DesactivarInvulnerabilidad());
             }
         }
+        if (other.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene("Niveles");
+        }
     }
 
     IEnumerator DesactivarInvulnerabilidad()
@@ -58,6 +63,7 @@ public class Jugador : MonoBehaviour
         if (VidaJugador <= 0)
         {
             textoVida.text = "¡Jugador Muerto!";
+            SceneManager.LoadScene("Muerte");
         }
     }
 }
