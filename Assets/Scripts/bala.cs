@@ -7,6 +7,8 @@ public class bala : MonoBehaviour
 {
     public float velocidad = 8.0f;
     public float valorHerida = 1.0f;
+
+    public AudioClip impactSound; // Sonido de impacto
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +25,12 @@ public class bala : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Colisiono");
-        other.SendMessage("RecibirDanio", valorHerida, SendMessageOptions.DontRequireReceiver);
+        other.SendMessage("tocado", valorHerida, SendMessageOptions.DontRequireReceiver);
         
         if(other.gameObject.tag == "Enemigo")
         {
-            Destroy(other.gameObject); //Enemigo 
             Destroy(gameObject); //Bala se destruye
+            AudioSource.PlayClipAtPoint(impactSound, transform.position);
         }
     }
 }

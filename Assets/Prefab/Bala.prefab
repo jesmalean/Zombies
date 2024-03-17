@@ -228,3 +228,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 5
   valorHerida: 1
+  impactSound: {fileID: 8300000, guid: 94f1135a34df76c4eafb350424454203, type: 3}
